@@ -11,10 +11,10 @@ class EmojiTableViewController: UITableViewController {
     
     let identifiuerCell = "emojiCell"
     var itemArray = [
-        Emoji(name: "Smile", destription: "u are pidor", emoji: "😀", isFavorite: false),
-        Emoji(name: "Gay", destription: "u are gay", emoji: "😠", isFavorite: false),
-        Emoji(name: "Dog", destription: "u are dog", emoji: "🫵", isFavorite: false),
-        Emoji(name: "Pidor", destription: "u are pidorgay", emoji: "👀", isFavorite: false)
+        Emoji(name: "TEXT", destription: "Some Text1", emoji: "😀", isFavorite: false),
+        Emoji(name: "TEXT", destription: "Some Text2", emoji: "😠", isFavorite: false),
+        Emoji(name: "TEXT", destription: "Some Text3", emoji: "🫵", isFavorite: false),
+        Emoji(name: "TEXT", destription: "Some Text4", emoji: "👀", isFavorite: false)
     ]
     
     override func viewDidLoad() {
@@ -29,9 +29,14 @@ class EmojiTableViewController: UITableViewController {
         guard let sourceVC = segue.source as? AddEmojiTableViewController else {return}
         let emoji = sourceVC.emojiEddit
         
-        let newIndexPath = IndexPath(row: itemArray.count, section: 0)
-        itemArray.append(emoji)
-        tableView.insertRows(at: [newIndexPath], with: .fade)
+        if let selectedIndexPath = tableView.indexPathForSelectedRow{
+            itemArray[selectedIndexPath.row] = emoji
+            tableView.reloadRows(at: [selectedIndexPath], with: .fade)
+        }else{
+            let newIndexPath = IndexPath(row: itemArray.count, section: 0)
+            itemArray.append(emoji)
+            tableView.insertRows(at: [newIndexPath], with: .fade)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

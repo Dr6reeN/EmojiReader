@@ -1,4 +1,4 @@
- //
+//
 //  AddEmojiTableViewController.swift
 //  EmojiReader
 //
@@ -10,7 +10,7 @@ import UIKit
 class AddEmojiTableViewController: UITableViewController {
     
     var emojiEddit = Emoji(name: "", destription: "", emoji: "", isFavorite: false)
-
+    
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emojiTextField: UITextField!
@@ -19,7 +19,7 @@ class AddEmojiTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
         updateUI()
         updateSaveButton()
     }
@@ -33,12 +33,11 @@ class AddEmojiTableViewController: UITableViewController {
     }
     
     private func updateUI() {
-            
         emojiTextField.text = emojiEddit.emoji
         nameTextField.text = emojiEddit.name
         descriptionTextField.text = emojiEddit.destription
     }
-
+    
     @IBAction func textChanged(_ sender: UITextField) {
         updateSaveButton()
     }
@@ -54,6 +53,6 @@ class AddEmojiTableViewController: UITableViewController {
         self.emojiEddit = Emoji(name: name, destription: description, emoji: emoji, isFavorite: self.emojiEddit.isFavorite)
         
     }
-
+    
     
 }
