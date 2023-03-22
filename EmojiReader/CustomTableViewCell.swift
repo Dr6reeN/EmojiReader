@@ -14,11 +14,11 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLable: UILabel!
     
     
-    var setEmoji: Emoji? {
+    var setCell: Emoji? {
         didSet{
-            emojiLable.text = setEmoji?.emoji
-            descriptionLable.text = setEmoji?.destription
-            nameLable.text = setEmoji?.name
+            emojiLable.text = setCell?.emoji
+            descriptionLable.text = setCell?.destription
+            nameLable.text = setCell?.name
         }
     }
 
